@@ -3,11 +3,12 @@
 {% block body %}
 <div class="col-lg-12">
 <h1>Where does the poop go?</h1>
+<small>Visually explore the infrastructure under your feet.</small>
 </div>
 <div class="col-lg-12">
 <form class="form-inline" method="GET" action="{{ url_for('map_page') }}">
    <div class="form-group">
-   <input type="text" class="form-control" placeholder="Address" name="addr">
+   <input type="text" class="form-control" placeholder="Omaha address" name="addr">
    <input type="text" class="form-control" placeholder="Zip (optional)" name="zip">
    </div>
    <button type="submit" class="btn btn-default">Submit</button>
@@ -15,15 +16,22 @@
  <br/>
 </div>
 <div class="col-lg-12">
- <p>If it is unable to find any sewers at the given address try using a nearby address.</p>
+ <p><small>If it is unable to find any sewers at the given address try using a nearby address.</small></p>
 </div>
+<div class="col-lg-12">
 <h3>Overview</h3>
 <ul>
-   <li><a href="http://poop.gilslotd.com:5000/map?addr=15520+Camden+Ave&zip=68116">Fort</a></li>
+   <li><a href="http://poop.gilslotd.com:5000/map?addr=15520+Camden+Ave&zip=68116">Fort St. (NW Omaha)</a></li>
    <li><a href="http://poop.gilslotd.com:5000/map?addr=14100+Crawford+St&zip=68010">Boys Town</a></li>
    <li><a href="http://poop.gilslotd.com:5000/map?addr=2824+N+205th+St&zip=68022">Elkhorn</a></li>
    <li><a href="http://poop.gilslotd.com:5000/map?addr=5117+S+170th+Ave&zip=68135">Southward Millard</a></li>
    <li><a href="http://poop.gilslotd.com:5000/map?addr=17010+M+St&zip=68135">Northward Millard</a></li>
-
+   <li><a href="http://poop.gilslotd.com:5000/map?addr=S+84th+St&zip=68046">Papillion</a></li>
+   <li><a href="http://poop.gilslotd.com:5000/map?addr=5232+S+23rd+St&zip=68107">South Omaha</a></li>
+   <li><a href="http://poop.gilslotd.com:5000/map?addr=2234+S+13th+St&zip=68107">13th and Martha (Sokol)</a></li>
+   <li><a href="http://poop.gilslotd.com:5000/map?addr=1000+deer+park+boulevard&zip=68107">Henry Doorly Zoo</a></li>
+   <li><a href="http://poop.gilslotd.com:5000/map?addr=216+s+34th&zip=68131">Midtown</a></li>
+   <li><a href="http://poop.gilslotd.com:5000/map?addr=5300+N+30th+St&zip=68111">Fort Omaha</a></li>
 </ul>
+</div>
 {% endblock%}
