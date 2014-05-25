@@ -57,6 +57,10 @@ SELECT CreateSpatialIndex('sewers', 'sewer')
          raise Exception('didnt fetch all objects')
 
       for sewer in obj_r['features']:
+         # skip pure storm sewers
+         if sewer['attributes']['SWR_TYPE'] == 1:
+            continue
+
          line_type = sewer['attributes']['LINE_TYPE']
          if line_type not in sewer_type_cache:
             c.execute('INSERT INTO sewer_types (id, sewer_type) VALUES (NULL, ?)', (line_type,))
