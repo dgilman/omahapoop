@@ -22,7 +22,7 @@ def after_request(response_class):
    g.conn.close()
 
 @app.route('/')
-def hello_world():
+def index_page():
    return render_template('index.html')
 
 @app.route('/map', methods=('GET',))
