@@ -94,12 +94,14 @@ WHERE sewers.rowid IN
    )
 ORDER BY dist asc""".format(point, head, point, point))
             for nearby in g.c.fetchall():
-               if nearby[0] not in sewers:
+               if nearby[0] not in sewers and nearby[0] not in downstreams and nearby[0] not in heads:
                   sewers.add(nearby[0])
                   downstreams.add(nearby[0])
          if not downstreams:
             # if, after all of that shit, there are still no new downstreams, give up
             break
+      if heads == downstreams:
+         break
       heads = downstreams
 
    # return the list of sewers
