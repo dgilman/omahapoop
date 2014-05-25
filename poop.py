@@ -110,16 +110,6 @@ ORDER BY dist asc""".format(point, head, point, point))
    sewer_json = '[' + ','.join((x[0] for x in g.c if x[0] != None)) + ']'
    return render_template('map.html', sewer_json=sewer_json)
 
-@app.route('/test')
-def test():
-   return render_template('map.html')
-
-@app.route('/sewers')
-def sewers_page():
-   g.c.execute('SELECT AsGeoJSON(Transform(sewer, 4326)) FROM sewers where id = 40558')
-   return Response(response='[' + ','.join((x[0] for x in g.c if x[0] != None)) + ']',
-      mimetype='application/json')
-
 def geocode(address, zip):
    r = requests.get('http://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx', params={'apiKey': Config.apikey, 'version': '4.01', 'city': 'Omaha',
       'state': 'NE', 'format': 'xml', 'streetAddress': address, 'zip': zip})
