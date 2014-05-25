@@ -60,6 +60,8 @@ SELECT CreateSpatialIndex('sewers', 'sewer')
          # skip pure storm sewers
          if sewer['attributes']['SWR_TYPE'] == 1:
             continue
+         if sewer['attributes']['LINE_TYPE'] == 'Abandoned':
+            continue
 
          line_type = sewer['attributes']['LINE_TYPE']
          if line_type not in sewer_type_cache:
