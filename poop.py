@@ -25,11 +25,11 @@ def after_request(response_class):
 def hello_world():
    return render_template('index.html')
 
-@app.route('/map', methods=('POST',))
+@app.route('/map', methods=('GET',))
 def map_page():
    # get geocoded lat, long
    try:
-      lat, lon = geocode(request.form['addr'], request.form.get('zip', ''))
+      lat, lon = geocode(request.args.get('addr'), request.args.get('zip', ''))
    except ServiceError as e:
       return e.args[0]
    # abort if not in omaha
