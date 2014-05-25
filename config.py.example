@@ -1,0 +1,4 @@
+class Config(object):
+   activate_venv = '/home/poop/omahapoop/venv/bin/activate_this.py'
+   db_dsn = 'db.sqlite3'
+   apikey = 'api key for geoservices.tamu.edu here'
