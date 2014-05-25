@@ -39,8 +39,7 @@ SELECT CreateSpatialIndex('sewers', 'sewer')
    sewer_type_cache = {}
 
    # good luck
-   r = requests.get('http://gis.dogis.org/arcgis/rest/services/Cityworks/Street_Reference/MapServer/5/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=true&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json').json
-
+   r = requests.get('http://gis.dogis.org/arcgis/rest/services/Cityworks/Street_Reference/MapServer/5/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=true&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json').json()
 
    print 'total objects: {0}'.format(len(r['objectIds']))
    for obj_ids in (r['objectIds'][pos:pos + PER_FETCH] for pos in xrange(0, len(r['objectIds']), PER_FETCH)):
@@ -48,7 +47,7 @@ SELECT CreateSpatialIndex('sewers', 'sewer')
       # %2C = urlencoded comma
       obj_ids = '%2C'.join((str(x) for x in obj_ids))
 
-      obj_r = requests.get('http://gis.dogis.org/arcgis/rest/services/Cityworks/Street_Reference/MapServer/5/query?where=&text=&objectIds={0}&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json'.format(obj_ids)).json
+      obj_r = requests.get('http://gis.dogis.org/arcgis/rest/services/Cityworks/Street_Reference/MapServer/5/query?where=&text=&objectIds={0}&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json'.format(obj_ids)).json()
 
       if len(obj_r['features']) != obj_ids_len:
          raise Exception('didnt fetch all objects')
