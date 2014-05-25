@@ -1,0 +1,9 @@
+Simple Flask app that tracks a 'downstream' sewer flow to show you where the poop goes.  With a bit of efforts this app can be ported to non-Omaha cities.
+
+Requires requests and pyspatialite.
+
+scraper.py - queries an arcgis REST server.  currently pointed at omaha/douglas county's database.  if you want to write your own, for the most part you only need to populate the sewers table.
+
+poop.py - the webapp.
+
+poop.wsgi - point your WSGI server at this file.
