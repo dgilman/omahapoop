@@ -62,7 +62,6 @@ ORDER BY dist asc""".format(lon, lat))
    heads = set([candidates[0][0]])
    while True:
       downstreams = set()
-      print 'trying head', heads
       for head in heads:
          g.c.execute("""SELECT id FROM sewers WHERE upstream_manhole =
             (SELECT downstream_manhole FROM sewers WHERE id = ?)""", (head,))
